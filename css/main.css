@@ -1,7 +1,28 @@
 /* ==========================================================================
    Author's custom styles
    ========================================================================== */
+body {
+  background-color: maroon;
+  color: gray;
+}
 
+.jumbotron {
+  background-color: maroon;
+}
+
+.navbar {
+  background-color: gray;
+  color: maroon;
+  border-color: maroon;
+}
+
+.nav a {
+  color: maroon;
+}
+
+.container-fluid {
+  background-color: gray;
+}
 #home {
   text-align: center;
   font-family: 'Linden Hill', serif;
