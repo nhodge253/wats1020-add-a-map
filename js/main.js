@@ -10,24 +10,27 @@
 // TODO: Inside of your on ready handler, invoke the Leaflet.js library
 // to draw a map in your `#map-container` div.
 $(document).ready(function() {
+  
+  var osm = "http://{s}.tile.osm.org/{z}/{x}/{y}.png";
 
-  var defaultLayer = L.tileLayer('https://api.mapbox.com/styles/v1/nhodge253/ciuz67hze00kx2jqn2j6ysufc/tiles/256/{z}/{x}/{y}?access_token={accessToken}',{
+  var darkLayer = L.tileLayer('https://api.mapbox.com/styles/v1/nhodge253/civ36hf7y000l2ipjhdb5bb6s/tiles/256/{z}/{x}/{y}?access_token={accessToken}',{
     attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>,                         Imagery © <a href="http://mapbox.com">Mapbox</a>',
     maxZoom: 7,
     id: 'mapbox.mapbox-streets-v7',
     accessToken: 'pk.eyJ1IjoibmhvZGdlMjUzIiwiYSI6ImNpdXo1b3hxbzA0ZmEyb25vY2hqMnViY2cifQ.K7f2e2dNhyc-fZrnccA6IQ'
-  })
+  });
 
   var satLayer = L.tileLayer('https://api.mapbox.com/styles/v1/nhodge253/ciuz67hze00kx2jqn2j6ysufc/tiles/256/{z}/{x}/{y}?access_token={accessToken}', {
     attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>,                         Imagery © <a href="http://mapbox.com">Mapbox</a>',
     maxZoom: 7,
     id: 'mapbox.mapbox-terrain-v2',
     accessToken: 'pk.eyJ1IjoibmhvZGdlMjUzIiwiYSI6ImNpdXo1b3hxbzA0ZmEyb25vY2hqMnViY2cifQ.K7f2e2dNhyc-fZrnccA6IQ'
-  })
+  });
 
   var mapLayers = {
         "Satellite": satLayer,
-        "Street View": defaultLayer,
+        "Night View": darkLayer,
+        "OSM": osm
       }
 
 
@@ -36,13 +39,12 @@ var mymap = L.map('map-container').setView([46.852886, -121.760374], 7);
 // tiles served through the MapQuest CDN. Consult this example to set up
 // the map tiles layers:
 
-var osm = "http://{s}.tile.osm.org/{z}/{x}/{y}.png";
+
 
 L.tileLayer(osm).addTo(mymap);
 
 L.control.layers(mapLayers).addTo(mymap);
- defaultLayer.addTo(mymap);
- satLayer.addTo(mymap);
+
 
 
 var marker = L.marker([46.852886, -121.760374]).addTo(mymap);
